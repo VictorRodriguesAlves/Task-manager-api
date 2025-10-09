@@ -27,9 +27,9 @@ Authorization: Bearer <seu_token_de_acesso>
 
 ```json
 {
-    "name": "string", // Obrigatório. O nome completo do usuário.
-    "email": "string", // Obrigatório. O endereço de e-mail (deve ser único).
-    "password": "string", // Obrigatório. Mínimo de 8 caracteres.
+    "name": "string", // Obrigatório. 
+    "email": "string", // Obrigatório. 
+    "password": "string", // Obrigatório.
 }
 ```
 
@@ -58,8 +58,8 @@ Authorization: Bearer <seu_token_de_acesso>
 
 ```json
 {
-    "email": "string", // Obrigatório. O e-mail cadastrado.
-    "password": "string" // Obrigatório. A senha.
+    "email": "string", // Obrigatório.
+    "password": "string" // Obrigatório. 
 }
 ```
 
@@ -130,8 +130,8 @@ Authorization: Bearer <seu_token_de_acesso>
 
 ```json
 {
-    "title": "string", // Obrigatório. O título da tarefa.
-    "description": "string", // Opcional. Uma descrição detalhada da tarefa.
+    "title": "string", // Obrigatório.
+    "description": "string", // Opcional. 
 }
 ```
 
@@ -187,7 +187,7 @@ Authorization: Bearer <seu_token_de_acesso>
 {
     "title": "string",
     "description": "string",
-    "status": "string" // ex: "completed" ou "pending"
+    "status": "string" // "completed" ou "pending"
 }
 ```
 
@@ -204,30 +204,6 @@ Retorna o objeto da tarefa atualizada, dentro da chave `"data"`.
 #### Resposta de Sucesso (Código `204 No Content`)
 
 Retorna uma resposta vazia.
-
------
-
-## Gerenciamento de Usuário
-
-### 9\. Obter dados do usuário autenticado
-
-* **Endpoint:** `/user`
-* **Método:** `GET`
-* **Requer Autenticação:** Sim
-
-#### Resposta de Sucesso (Código `200 OK`)
-
-```json
-{
-    "data": {
-        "id": 1,
-        "name": "Seu Nome",
-        "email": "email@exemplo.com",
-        "created_at": "2025-10-27T18:00:00.000000Z",
-        "updated_at": "2025-10-27T18:00:00.000000Z"
-    }
-}
-```
 
 -----
 
@@ -250,12 +226,12 @@ Armazena as informações dos usuários da aplicação.
 
 Armazena as tarefas criadas pelos usuários.
 
-| Coluna | Tipo | Descrição |
-| :--- | :--- | :--- |
-| `id` | BIGINT (PK) | Identificador único da tarefa. |
-| `user_id` | BIGINT (FK) | Chave estrangeira que referencia `users.id`. |
-| `title` | VARCHAR | Título da tarefa. |
-| `description` | TEXT | Descrição detalhada da tarefa (opcional). |
-| `status` | VARCHAR | Status atual da tarefa (ex: "pending", "completed"). |
-| `created_at` | TIMESTAMP | Data e hora de criação do registro. |
-| `updated_at` | TIMESTAMP | Data e hora da última atualização do registro. |
+| Coluna | Tipo        | Descrição                                       |
+| :--- |:------------|:------------------------------------------------|
+| `id` | BIGINT (PK) | Identificador único da tarefa.                  |
+| `user_id` | BIGINT (FK) | Chave estrangeira que referencia `users.id`.    |
+| `title` | VARCHAR     | Título da tarefa.                               |
+| `description` | TEXT        | Descrição detalhada da tarefa (opcional).       |
+| `status` | ENUM        | Status atual da tarefa ['pending', 'completed'] |
+| `created_at` | TIMESTAMP   | Data e hora de criação do registro.             |
+| `updated_at` | TIMESTAMP   | Data e hora da última atualização do registro.  |
